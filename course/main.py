@@ -23,7 +23,6 @@ def main():
             "currency": currency(data)[i]
         }
         data_for_dict.append(card)
-
     # сортировка массива по дате
     data_for_dict = sorted(data_for_dict, key=lambda x: datetime.datetime.strptime(x['date'], '%d.%m.%Y'), reverse=True)
 

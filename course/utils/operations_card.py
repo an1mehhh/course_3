@@ -7,13 +7,14 @@ def transfer_date(data):
     """обработка 'date' из json"""
     date = []
     for item in data:
-        if item is None or item.get("date") == {}:
-            date.append("")
-        else:
+        if isinstance(item.get("date"), str) or item.get("date") == {}:
             # перевод даты в формат дд.мм.гг.
-            date_line = datetime.datetime.fromisoformat(item["date"])
+            date_line = datetime.datetime.fromisoformat(item.get("date"))
             converted_date = datetime.datetime.strftime(date_line, "%d.%m.%Y")
             date.append(converted_date)
+
+        else:
+            date.append("")
 
     return date
 
@@ -98,5 +99,3 @@ def currency(data):
         date.append(item["operationAmount"]["currency"]["name"])
 
     return date
-
-

@@ -4,7 +4,8 @@ import json
 def read_file(path):
     """чтение json файла"""
     with open(path, "r", encoding="utf-8") as file:
-        return json.load(file)
+        data = json.load(file)
+    return data
 
 
 def payment_by_invoice(card_number):
